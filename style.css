@@ -1,0 +1,310 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav .menu {
+  position: relative;
+  z-index: 1003; /* Добавьте это */
+  pointer-events: auto !important;
+  background-color: white;
+}
+.nav #menu-list {
+  visibility: hidden;
+  flex-direction: column;
+  position: absolute;
+  text-align: left;
+  list-style-type: none;
+  display: flex;
+  background-color: white;
+  opacity: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-max-content;
+  height: max-content;
+  border-radius: 10px;
+  transform: translateY(-20px);
+  margin-left: 1.25%;
+}
+.nav #menu-list li {
+  text-align: left;
+  background: black;
+  -webkit-background-clip: text;
+  background-clip: none;
+  -webkit-text-fill-color: transparent;
+  color: black;
+  display: table;
+  padding-left: 1%;
+  font-size: 20px;
+  background-size: 150% 150%;
+  animation: gradient-text 10s ease-in-out infinite;
+  transform: translate3d(0, 0, 0);
+}
+.nav #menu-list li a {
+  z-index: infinite;
+}
+.nav #menu-list.active {
+  visibility: visible;
+  z-index: infinite;
+  display: block;
+  animation: fadeInDowner 0.3s ease-in-out forwards;
+}
+.nav #menu-list.closing {
+  animation: fadeInUpper 0.3s ease-in-out forwards;
+}
+.nav button {
+  background: none;
+  outline: inherit;
+  font: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.nav .menu-btn {
+  font-family: initial !important;
+  width: auto;
+  padding-left: 1.75%;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center;
+  will-change: transform;
+  font-size: 60px;
+  font-weight: normal;
+}
+.nav .menu-btn:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeInUpper {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+@keyframes fadeInDowner {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.osnovniye {
+  background: linear-gradient(270deg, #C9D6FF, #E2E2E2);
+  height: 185vh;
+  width: 100%;
+}
+
+.sv_block {
+  background: rgba(255, 255, 255, 0.8);
+  margin: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  margin-right: 30px;
+  line-height: 1.5;
+  transition: all 0.3s ease-in-out;
+}
+
+.sv_block:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.sv_block {
+  position: relative;
+  padding: 15px 20px 15px 40px; /* Больший левый отступ для полоски */
+  left: 5px;
+  margin: 20px;
+  border-radius: 8px;
+}
+.sv_block h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.sv_block p {
+  font-size: 18px;
+}
+
+.sv_block::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background-size: 150% 150%;
+  background: linear-gradient(45deg, hsl(220, 100%, 60%), hsl(270, 100%, 50%));
+  animation: gradient-text 2s ease infinite; /* Цвет полоски */
+  border-radius: 6px 0 0 6px;
+}
+
+.textHover {
+  position: relative;
+  background: linear-gradient(90deg, hsl(220, 100%, 60%), hsl(190, 100%, 50%), hsl(270, 100%, 50%));
+  animation: gradient-text 5s ease-in-out infinite;
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.textHover:hover .textUnabled {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.textUnabled {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 12px;
+  opacity: 0;
+  text-align: center;
+  justify-content: center;
+  visibility: hidden;
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-max-content;
+  height: max-content;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  max-width: 300px; /* Ограничиваем ширину подсказки */
+  white-space: normal; /* Разрешаем перенос текста */
+  word-break: break-word; /* Перенос длинных слов */
+}
+.textUnabled::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+body {
+  font-family: "Montserrat", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.provod {
+  position: relative;
+  height: 220vh;
+  width: 100%;
+  background: linear-gradient(-45deg, #C9D6FF, #E2E2E2);
+}
+
+.container, .final {
+  padding-top: 20px;
+  position: relative;
+  height: 190vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #C9D6FF, #E2E2E2);
+}
+.container h1, .final h1 {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 45px;
+  text-align: center;
+}
+.container .wave-card, .final .wave-card {
+  position: relative;
+  left: 5px;
+  margin: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(201, 214, 255, 0.5);
+}
+.container .wave-card:hover, .final .wave-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+}
+.container h2, .final h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.4em;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 8px;
+}
+.container h2::after, .final h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.32px;
+  background: linear-gradient(90deg, #3a4a8d 0%, #C9D6FF 100%);
+}
+.container p, .final p {
+  font-size: 1.3em;
+  margin: 0 0 10px 0;
+}
+.container .effect, .final .effect {
+  background: rgba(201, 214, 255, 0.3);
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 15px;
+  border-left: 3px solid #3a4a8d;
+  transition: all 0.45s ease-in-out;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+.container .effect-title, .final .effect-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+.container .wave-card:hover .effect, .final .wave-card:hover .effect {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.final {
+  padding-top: 20px;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to top, #C9D6FF, #E2E2E2);
+}/*# sourceMappingURL=style.css.map */
